@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+
+# Local runtime files
+*.log
+*.err
+data/
+ride_history.json
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build/cache
+.pytest_cache/
+.mypy_cache/
+dist/
+build/

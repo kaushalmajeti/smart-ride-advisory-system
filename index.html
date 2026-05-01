@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Ride - AI-Powered Ride Comparison</title>
+  <meta name="description" content="Compare ride prices across Ola and Uber with AI-powered recommendations, surge pricing predictions, and personalised user insights." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    if (!localStorage.getItem("user")) window.location.href = "login.html";
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Smart Ride</div>
+    <div class="header-right">
+      <span id="user-label"></span>
+      <button class="btn-logout" onclick="logout()">Log out</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- User Persona Card -->
+    <section id="user-profile" class="profile-section"></section>
+
+    <section class="search-section">
+      <h1>Compare ride prices</h1>
+      <p class="lead">Enter your pickup and drop locations to see fares across all providers with AI-powered recommendations.</p>
+
+      <div class="input-group">
+        <label>Pickup</label>
+        <input id="pickup" placeholder="Enter pickup location"
+          oninput="handleInput(this, 'pickupList')" autocomplete="off"/>
+        <div id="pickupList" class="suggestions"></div>
+      </div>
+
+      <div class="input-group">
+        <label>Drop</label>
+        <input id="drop" placeholder="Enter drop location"
+          oninput="handleInput(this, 'dropList')" autocomplete="off"/>
+        <div id="dropList" class="suggestions"></div>
+      </div>
+
+      <button class="btn-check" onclick="getDistance()">Check Prices</button>
+    </section>
+
+    <section id="result"></section>
+
+    <section id="history" class="history-section"></section>
+
+    <!-- Model Metrics Dashboard -->
+    <section id="metrics-dashboard" class="metrics-section">
+      <button class="btn-metrics" onclick="toggleMetrics()">View AI Model Performance</button>
+      <div id="metrics-content" class="metrics-content" style="display:none;"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("user-label").innerText = localStorage.getItem("user") || "";
+    loadUserProfile();
+  </script>
+</body>
+</html>

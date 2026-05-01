@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Ride - Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0f;
+      --surface: #16161a;
+      --border: #2a2a30;
+      --accent: #f0c040;
+      --accent-dim: rgba(240,192,64,0.12);
+      --text: #f0ede8;
+      --muted: #7a7885;
+      --error: #ff6b6b;
+      --success: #4cde9e;
+      --radius: 12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 44px 40px;
+      width: 100%;
+      max-width: 420px;
+      animation: fadeUp 0.4s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 18px;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+    }
+
+    input::placeholder { color: var(--muted); }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    button:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d0d0f;
+    }
+
+    .btn-secondary {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(240,192,64,0.25);
+    }
+
+    .btn-demo {
+      width: 100%;
+      margin-top: 12px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    button:hover { opacity: 0.88; }
+
+    #otp-section {
+      display: none;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    #otp-section h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    #msg {
+      margin-top: 20px;
+      font-size: 13px;
+      min-height: 20px;
+      text-align: center;
+      border-radius: 8px;
+      padding: 0;
+      transition: all 0.2s;
+    }
+
+    #msg.error   { color: var(--error);   background: rgba(255,107,107,0.08); padding: 10px 14px; }
+    #msg.success { color: var(--success); background: rgba(76,222,158,0.08);  padding: 10px 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">Smart Ride</div>
+    <div class="subtitle">Sign in to compare rides and save history</div>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+
+    <div class="btn-row">
+      <button class="btn-primary"   onclick="login()">Log in</button>
+      <button class="btn-secondary" onclick="signUp()">Sign up</button>
+    </div>
+    <button class="btn-demo" onclick="demoLogin()">Try Demo</button>
+
+    <div id="otp-section">
+      <h3>Verify your account</h3>
+      <label for="otp">OTP from email</label>
+      <input id="otp" type="text" placeholder="Enter 6-digit code" autocomplete="one-time-code" />
+      <button class="btn-secondary" style="width:100%" onclick="confirmUser()">Verify OTP</button>
+    </div>
+
+    <div id="msg"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/amazon-cognito-identity-js@6.2.0/dist/amazon-cognito-identity.min.js"></script>
+  <script src="auth.js"></script>
+  
+</body>
+</html>

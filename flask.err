@@ -1,0 +1,12 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+127.0.0.1 - - [01/May/2026 14:03:18] "POST /recommend HTTP/1.1" 200 -
+127.0.0.1 - - [01/May/2026 14:03:20] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [01/May/2026 14:03:44] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [01/May/2026 14:03:44] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/May/2026 14:03:44] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/May/2026 14:03:44] "GET /userProfile/kaushalmajeti@gmail.com HTTP/1.1" 200 -
+127.0.0.1 - - [01/May/2026 14:03:45] "GET /userProfile/kaushalmajeti@gmail.com HTTP/1.1" 200 -
+127.0.0.1 - - [01/May/2026 14:03:45] "GET /getHistory/kaushalmajeti@gmail.com HTTP/1.1" 200 -
+127.0.0.1 - - [01/May/2026 14:03:58] "GET /modelMetrics HTTP/1.1" 200 -

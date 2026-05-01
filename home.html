@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Ride - AI Ride Recommendation Platform</title>
+  <meta name="description" content="Smart Ride compares Ola and Uber fares, predicts surge pricing, segments customers with K-Means, and recommends the best ride using an ensemble ML pipeline." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">Smart Ride</a>
+    <nav>
+      <a href="#platform">Platform</a>
+      <a href="#models">Models</a>
+      <a href="#workflow">Workflow</a>
+      <a class="nav-login" href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="eyebrow">AI ride comparison and recommendation system</span>
+        <h1>Smart Ride</h1>
+        <p>
+          A machine-learning ride assistant that compares fares, predicts surge,
+          understands customer type, and recommends the most suitable Ola or Uber ride.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="login.html">Open App</a>
+          <button class="btn-secondary" onclick="startDemo()">Try Demo</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="platform" class="section intro-grid">
+      <div>
+        <span class="section-kicker">What it does</span>
+        <h2>One interface for route, fare, history, and AI recommendation.</h2>
+      </div>
+      <div class="feature-list">
+        <article>
+          <span>01</span>
+          <h3>Ride Price Comparison</h3>
+          <p>Calculates route distance and displays available fare options across Ola Auto, Ola Mini, Uber Go, and Uber Sedan.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Customer Segmentation</h3>
+          <p>Uses K-Means style customer profiling to classify riders as Budget Rider, Premium Commuter, Weekend Explorer, Night Owl, or Regular Rider.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Personal AI Recommendation</h3>
+          <p>Combines route fit, time context, ride history, and customer segment to recommend the best ride for that user.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Model Dashboard</h3>
+          <p>Shows model metrics, confusion matrices, surge model quality, and clustering output for project demonstration.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="models" class="section models-band">
+      <div class="models-copy">
+        <span class="section-kicker">ML pipeline</span>
+        <h2>Built around a full ensemble model stack.</h2>
+        <p>
+          Smart Ride uses XGBoost, Random Forest, and Gradient Boosting as base
+          learners in a stacking ensemble. LSTM adds ride-history sequence behavior,
+          K-Means creates customer segments, and surge regression estimates dynamic pricing.
+        </p>
+      </div>
+      <div class="model-grid">
+        <div><strong>XGBoost</strong><span>base learner</span></div>
+        <div><strong>Random Forest</strong><span>base learner</span></div>
+        <div><strong>Gradient Boost</strong><span>base learner</span></div>
+        <div><strong>Stacking</strong><span>final blend</span></div>
+        <div><strong>LSTM</strong><span>history pattern</span></div>
+        <div><strong>K-Means</strong><span>customer segment</span></div>
+      </div>
+    </section>
+
+    <section id="workflow" class="section workflow">
+      <span class="section-kicker">How recommendation happens</span>
+      <h2>From pickup and drop to final ride choice.</h2>
+      <div class="steps">
+        <article>
+          <span>1</span>
+          <h3>Enter Route</h3>
+          <p>The app geocodes pickup and drop locations, then calculates route distance.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Generate Fares</h3>
+          <p>Fare logic applies distance pricing and surge multiplier to every available ride.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>Profile Customer</h3>
+          <p>History and K-Means segmentation identify budget, premium, weekend, or night behavior.</p>
+        </article>
+        <article>
+          <span>4</span>
+          <h3>Recommend Ride</h3>
+          <p>The final score combines ML probabilities with the user segment bias.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <h2>Ready to compare a trip?</h2>
+      <p>Open the app, use demo login, and test how the recommendation changes with ride history.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="login.html">Launch Smart Ride</a>
+        <button class="btn-secondary" onclick="startDemo()">Try Demo</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function startDemo() {
+      localStorage.setItem("user", "demo@example.com");
+      localStorage.setItem("idToken", "demo-session");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
