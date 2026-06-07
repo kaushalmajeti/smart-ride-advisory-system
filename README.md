@@ -1,6 +1,6 @@
 # Smart Ride
 
-Smart Ride is an AI-powered ride comparison and recommendation web app. It compares ride prices, predicts surge, profiles customers, and recommends the best Ola/Uber ride for each user.
+Smart Ride is an AI-powered ride comparison and recommendation web app. It compares ride prices, predicts surge, profiles customers, and recommends the best Ola/Uber ride for each user
 
 ## Features
 
